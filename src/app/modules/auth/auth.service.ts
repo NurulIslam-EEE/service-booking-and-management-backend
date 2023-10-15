@@ -42,15 +42,15 @@ const loginUser = async (loginData: IUserLogin) => {
     throw new ApiError(httpStatus.NOT_FOUND, "Password is incorrect");
   }
 
-  const { _id, role } = isUserExist;
+  const { _id, role, email: userEmail } = isUserExist;
   const accessToken = jwtHelpers.createToken(
-    { _id, role },
+    { _id, role, email: userEmail },
     config.jwt.secret as Secret,
     config.jwt.expires_in as string
   );
 
   const refreshToken = jwtHelpers.createToken(
-    { _id, role },
+    { _id, role, userEmail },
     config.jwt.refresh_secret as Secret,
     config.jwt.refresh_expires_in as string
   );
