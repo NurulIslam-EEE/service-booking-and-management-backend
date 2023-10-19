@@ -9,4 +9,5 @@ const auth_controller_1 = require("./auth.controller");
 const router = express_1.default.Router();
 router.post("/login", auth_controller_1.authController.loginUser);
 router.post("/signup", auth_controller_1.authController.createUser);
+router.get("/refersToken", auth_controller_1.authController.refreshToken);
 exports.AuthRoute = router;

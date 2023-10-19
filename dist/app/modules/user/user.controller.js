@@ -53,18 +53,19 @@ const deleteSingleUser = (0, catchAsync_1.default)((req, res, next) => __awaiter
         data: result,
     });
 }));
-// const getProfile = catchAsync(
-//   async (req: Request, res: Response, next: NextFunction) => {
-//     const id = req.user?._id;
-//     const result = await UserService.getProfile(id);
-//     sendResponse(res, {
-//       statusCode: httpStatus.OK,
-//       success: true,
-//       message: "User's information retrieved successfully",
-//       data: result,
-//     });
-//   }
-// );
+const getProfile = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    const id = (_a = req.user) === null || _a === void 0 ? void 0 : _a._id;
+    const email = req.params.email;
+    console.log("uuuu", req.user);
+    const result = yield user_service_1.UserService.getProfile(email);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: "User's information retrieved successfully",
+        data: result,
+    });
+}));
 // const updateProfile = catchAsync(
 //   async (req: Request, res: Response, next: NextFunction) => {
 //     const id = req.user?._id;
@@ -82,6 +83,6 @@ exports.UserController = {
     getSingleUser,
     updatedSingleUser,
     deleteSingleUser,
-    //   getProfile,
+    getProfile,
     //   updateProfile,
 };

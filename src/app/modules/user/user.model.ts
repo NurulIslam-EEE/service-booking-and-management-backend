@@ -23,15 +23,8 @@ const userSchema = new Schema<IUser>(
     },
 
     name: {
-      firstName: {
-        type: String,
-        required: true,
-      },
-
-      lastName: {
-        type: String,
-        required: true,
-      },
+      type: String,
+      required: true,
     },
 
     address: {

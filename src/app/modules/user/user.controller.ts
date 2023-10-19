@@ -55,19 +55,21 @@ const deleteSingleUser = catchAsync(
   }
 );
 
-// const getProfile = catchAsync(
-//   async (req: Request, res: Response, next: NextFunction) => {
-//     const id = req.user?._id;
-//     const result = await UserService.getProfile(id);
+const getProfile = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const id = req.user?._id;
+    const email = req.params.email;
+    console.log("uuuu", req.user);
+    const result = await UserService.getProfile(email);
 
-//     sendResponse(res, {
-//       statusCode: httpStatus.OK,
-//       success: true,
-//       message: "User's information retrieved successfully",
-//       data: result,
-//     });
-//   }
-// );
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "User's information retrieved successfully",
+      data: result,
+    });
+  }
+);
 
 // const updateProfile = catchAsync(
 //   async (req: Request, res: Response, next: NextFunction) => {
@@ -88,6 +90,6 @@ export const UserController = {
   getSingleUser,
   updatedSingleUser,
   deleteSingleUser,
-  //   getProfile,
+  getProfile,
   //   updateProfile,
 };

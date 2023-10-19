@@ -37,7 +37,7 @@ const deleteSingleUser = async (id: string): Promise<IUser | null> => {
 };
 
 const getProfile = async (id: string): Promise<IUser | null> => {
-  const user = await User.findOne({ _id: id }).select({
+  const user = await User.findOne({ email: id }).select({
     createdAt: 0,
     updatedAt: 0,
   });

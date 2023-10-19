@@ -36,7 +36,7 @@ const deleteSingleUser = (id) => __awaiter(void 0, void 0, void 0, function* () 
     return deleteUser;
 });
 const getProfile = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = yield user_model_1.User.findOne({ _id: id }).select({
+    const user = yield user_model_1.User.findOne({ email: id }).select({
         createdAt: 0,
         updatedAt: 0,
     });
